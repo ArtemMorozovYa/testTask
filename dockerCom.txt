@@ -1,0 +1,50 @@
+--List of all images
+docker image
+--List of only running docker containers
+docker ps (docker container ls)
+	-To see all containers
+	docker ps -a
+	-To see only ID`s
+	docker ps -aq
+--Pull an image from docker hub
+docker pull {imageName} // docker pull nginx
+--To run a container from an image
+docker run {image:tag} // docker run nginx:latest
+	-To run in detached mod
+	docker run -d nginx:latest
+	-To map localhost to container port
+	docker run -d -p {localhost numbers:container port} {image:tag} // docker run -d -p 8080:80 nginx:latest
+	-Map multiple ports
+	docker run -d -p 8080:80 -p 3000:80 nginx:latest
+	-To add name to container
+	docker run --name {containerName} -d -p 8080:80 -p 3000:80 nginx:latest
+--To start existing container
+docker start {containerName}
+--To stop container
+docker stop {containerId} or docker stop {containerName} 
+--To delete container (NOT RUNNING)
+docker rm {containerId}
+	-To delete all containers
+	docker rm $(docker ps -aq)
+	-To delete all container WITH RUNNIGN
+	docker rm -f $(docker ps -aq)
+--To get inside of a container
+docker exec -it {containerId} {executable path} // find path in docker inspect in column cmd // docker exec -it e49e62aa794b /bin/sh
+--To delete <none> images after rebuilding
+docker rmi $(docker images -f “dangling=true” -q)
+--To run a container and create a VOLUME
+docker run --name {containerName} -v {directory of files u add to volume}:{destination of files in container}-d -p 8080:80 -p 3000:80 nginx:latest
+for nginx //docker run --name website -v C:\Users\artem\front\website-docker:/usr/share/nginx/html:ro -d -p 8080:80 -p 3000:80 nginx:latest (ro for read only)
+--To enter container files 
+docker exec -it {containerName} bash
+--To copy volumes from one containeter to another
+docker run --name {container-name-copy} --volumes-from {existing container with volumes} -d -p 8081:80 nginx
+
+___________________________________CREATING OWN IMAGE________________________________________
+
+--DOCKERFILE COMMANDS
+FROM - base image we want to use to create our own
+ADD - to add everything in current directory into destination (same as add volumes to nginx)
+WORKDIR - create working directory inside a containercls
+-TO build an image
+docker build -t {imageName:tag} {DockerFile Path}// docker build -t website:latest . // . for current directory 

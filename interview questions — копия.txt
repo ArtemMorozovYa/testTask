@@ -1,0 +1,14 @@
+JAVA CORE
+--What is OOP?
+Object oriented programming is a computer programming paradigm based on the concept of "objects", which contains unique attributes and properties.
+--Difference between OOP and procedural programming.
+Procedural programming is based on the concept of calling procedures, where data moves freely withing system from one function to another. It is like sequence of instructions.
+--OOP disadvantages
+it is slow//much code
+--OOP concepts
+The main ideas behind OOP include: abstraction, encupsulation, inheritance, polymorphism.
+Abstraction - is the process of hiding some details and showing only essential data to user. it is using simple things to represent complexity.This can be achieved with abstract classes or interfaces. To summarize it is using 
+simple things that represents something complex.
+-Encapsulation - is concept of hiding the internal representation or state of the object from outside. To change state or behavior we should use provided methods. We can achieve this 
+by using access modifiers(public, privat, proteckted, package privat).
+Inheritance - is concept of 
